@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Victoria ❤️</title>
+    <style>
+        :root {
+            --azul-fondo: #2e41ff;
+            --fucsia: #FF1493;
+            --dorado: #FFD700;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--azul-fondo);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+            transition: background-color 1s ease;
+        }
+
+        .card-container {
+            width: 100%;
+            max-width: 350px;
+            margin-top: 10px;
+        }
+
+        .portada {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 4px solid white;
+        }
+
+        #mensaje-programado {
+            margin: 25px 0 10px 0;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--dorado);
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 15px;
+        }
+
+        #reloj {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .mensaje-espera {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .btn-album {
+            background-color: white;
+            color: var(--azul-fondo);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            font-size: 1rem;
+        }
+
+        #galeria {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.98);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cerrar {
+            position: fixed;
+            top: 20px; right: 25px;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .grid-fotos {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 60px;
+            padding-bottom: 40px;
+        }
+
+        .grid-fotos div {
+            background: #1a1a1a;
+            border-radius: 8px;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            border: 2px solid white;
+        }
+
+        .grid-fotos img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ESTILO PARA LA SORPRESA FINAL */
+        #sorpresa-final {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 2000;
+            background-color: var(--fucsia);
+        }
+
+        .img-sorpresa {
+            width: 90%;
+            max-width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.6);
+            border: 5px solid white;
+            animation: aparecer 2s forwards;
+        }
+
+        @keyframes aparecer { 
+            from { opacity: 0; transform: scale(0.8); } 
+            to { opacity: 1; transform: scale(1); } 
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ETAPA 1: ESPERA -->
+    <div id="pantalla-espera">
+        <div class="card-container">
+            <img src="https://i.ibb.co/jvWGXVJZ/Tarjeta-de-m-sica-con-c-digo-Spotify-pareja-rom-ntico-negro-y-blanco.png" class="portada">
+        </div>
+
+        <div id="mensaje-programado">Cargando amor...</div>
+
+        <div id="reloj">0d 0h 0m 0s</div>
+        
+        <p class="mensaje-espera">
+            Falta poquito para tus 31 años, mi amorcito.<br> 
+            Te extraño mucho y quisiera estar contigo.
+        </p>
+        
+        <button class="btn-album" onclick="abrirAlbum()">📸 Ver nuestros recuerdos amor</button>
+    </div>
+
+    <!-- ÁLBUM DE FOTOS -->
+    <div id="galeria">
+        <span class="cerrar" onclick="cerrarAlbum()">&times;</span>
+        <h2 style="margin-top: 40px;">Nuestros Momentos bellos ❤️</h2>
+        <div class="grid-fotos">
+            <!-- Aquí están tus 76 fotos cargadas -->
+            <div><img src="https://i.ibb.co/b5vF9YLD/a9b9935d-7e42-4485-b653-8e276985dd5e.jpg"></div>
+            <div><img src="https://i.ibb.co/HLj8FbzL/b66cc5e9-a902-4005-a2cc-7b310f4eaff6.jpg"></div>
+            <div><img src="https://i.ibb.co/9HGFSjtz/2a5676e1-5e87-4aa0-b772-e1c54dba6032.jpg"></div>
+            <div><img src="https://i.ibb.co/5g5sPvxS/3e0563e5-ddc7-4d1a-8a00-7c61085c9351.jpg"></div>
+            <div><img src="https://i.ibb.co/bgpsMpyx/5d9c03b5-024f-40e0-81eb-8afb7ba8e79c.jpg"></div>
+            <div><img src="https://i.ibb.co/7t6Fh3yX/6ec40e0c-1c17-400d-9cce-4b3511b60aff.jpg"></div>
+            <div><img src="https://i.ibb.co/N649TC0G/6e1c084c-7001-41ef-add5-bc82c6e124bd.jpg"></div>
+            <div><img src="https://i.ibb.co/KcYwXf7z/a909120f-660a-428e-90d8-77f8feab488e.jpg"></div>
+            <div><img src="https://i.ibb.co/Wp7mcrGp/2e08bba7-8070-4cc9-bf33-eba061b8bea3.jpg"></div>
+            <div><img src="https://i.ibb.co/ycyCyX9f/8d216d50-c4ab-4b33-9a31-2496ff166c9c.jpg"></div>
+            <div><img src="https://i.ibb.co/ymDhhsg6/317986c4-d028-4f86-be43-cac562f488e4.jpg"></div>
+            <div><img src="https://i.ibb.co/DPMH4FjR/8fa86e73-f43e-4dc5-82aa-7bcc88e69292.jpg"></div>
+            <div><img src="https://i.ibb.co/0pLQF2BB/c8915d0b-2a07-4619-b254-9c0f3ac771e5.jpg"></div>
+            <div><img src="https://i.ibb.co/jk3mJxDt/c6eb5f8f-8118-4ddc-8074-5aec36db3560.jpg"></div>
+            <div><img src="https://i.ibb.co/99SWG4sJ/97660e3f-9ad3-4ed5-a3b4-d6b812faa665.jpg"></div>
+            <div><img src="https://i.ibb.co/FL82kkYt/885c2c28-9504-43ec-9b6f-f9bf173c26cd.jpg"></div>
+            <div><img src="https://i.ibb.co/PvbXQrpg/IMG-2986.jpg"></div>
+            <div><img src="https://i.ibb.co/yFQK9mpB/IMG-2983.jpg"></div>
+            <div><img src="https://i.ibb.co/5x9SmHsb/IMG-2984.jpg"></div>
+            <div><img src="https://i.ibb.co/jZbkR8mT/IMG-2985.jpg"></div>
+            <div><img src="https://i.ibb.co/bRCPH35H/IMG-4576.jpg"></div>
+            <div><img src="https://i.ibb.co/wrFrSp70/IMG-5267.jpg"></div>
+            <div><img src="https://i.ibb.co/1f00Wg0p/IMG-5833.jpg"></div>
+            <div><img src="https://i.ibb.co/MDhkDkDw/IMG-6566.jpg"></div>
+            <div><img src="https://i.ibb.co/FqDHzBvv/IMG-6989.jpg"></div>
+            <div><img src="https://i.ibb.co/gbny7QXC/IMG-7530.jpg"></div>
+            <div><img src="https://i.ibb.co/qLpYGbHk/IMG-7533.jpg"></div>
+            <div><img src="https://i.ibb.co/HfVtcJ8v/IMG-7535.jpg"></div>
+            <div><img src="https://i.ibb.co/yc4hrbPB/IMG-8397.jpg"></div>
+            <div><img src="https://i.ibb.co/bj06339N/IMG-8386.jpg"></div>
+            <div><img src="https://i.ibb.co/5hg4D7JL/IMG-8388.jpg"></div>
+            <div><img src="https://i.ibb.co/tM3Lr02S/IMG-8385.jpg"></div>
+            <div><img src="https://i.ibb.co/gFSPBWMH/IMG-8391.jpg"></div>
+            <div><img src="https://i.ibb.co/F4R9wFzs/IMG-8379.jpg"></div>
+            <div><img src="https://i.ibb.co/4nv1dNPf/IMG-8382.jpg"></div>
+            <div><img src="https://i.ibb.co/vvRbhmQp/IMG-8417.jpg"></div>
+            <div><img src="https://i.ibb.co/GftfFLWB/IMG-8418.jpg"></div>
+            <div><img src="https://i.ibb.co/pvg9tpwH/6f18b6c0-aabb-45f5-8ff7-34fbddf3fcbd.jpg"></div>
+            <div><img src="https://i.ibb.co/rKdLRPbp/IMG-8630.jpg"></div>
+            <div><img src="https://i.ibb.co/Kc0xLRQs/IMG-8629.jpg"></div>
+            <div><img src="https://i.ibb.co/MkXhRfvP/IMG-8835.jpg"></div>
+            <div><img src="https://i.ibb.co/jv70Hgmd/IMG-8837.jpg"></div>
+            <div><img src="https://i.ibb.co/vRsWyDG/IMG-8840.jpg"></div>
+            <div><img src="https://i.ibb.co/vxxpSZpW/90964406-ccb0-4105-91c4-82f904327b05.jpg"></div>
+            <div><img src="https://i.ibb.co/qY57gL3J/a4ef4afa-4da1-4560-bdfb-a6c74e9d679a.jpg"></div>
+            <div><img src="https://i.ibb.co/0VztKpJM/IMG-8868.jpg"></div>
+            <div><img src="https://i.ibb.co/MDXdzh0C/IMG-9029.jpg"></div>
+            <div><img src="https://i.ibb.co/Q3dyk4R8/IMG-9028.jpg"></div>
+            <div><img src="https://i.ibb.co/LXKNPWxL/IMG-9031.jpg"></div>
+            <div><img src="https://i.ibb.co/bRPHT8nL/IMG-9027.jpg"></div>
+            <div><img src="https://i.ibb.co/v4Lc0CVP/IMG-9032.jpg"></div>
+            <div><img src="https://i.ibb.co/8gVKhRfZ/IMG-9062.jpg"></div>
+            <div><img src="https://i.ibb.co/YFjrQp9W/IMG-9065.jpg"></div>
+            <div><img src="https://i.ibb.co/1GBvcNmz/IMG-9080.jpg"></div>
+            <div><img src="https://i.ibb.co/rR9LxW4L/IMG-9079.jpg"></div>
+            <div><img src="https://i.ibb.co/d4xc14Yd/IMG-9076.jpg"></div>
+            <div><img src="https://i.ibb.co/gby3m5G0/IMG-9078.jpg"></div>
+            <div><img src="https://i.ibb.co/93q9xPD0/IMG-9092.jpg"></div>
+            <div><img src="https://i.ibb.co/SX5SKxRN/IMG-9094.jpg"></div>
+            <div><img src="https://i.ibb.co/sv2HvXLL/IMG-9095.jpg"></div>
+            <div><img src="https://i.ibb.co/35K7qrVY/IMG-9096.jpg"></div>
+            <div><img src="https://i.ibb.co/gZyZ42Z8/IMG-9116.jpg"></div>
+            <div><img src="https://i.ibb.co/bjnf29d0/IMG-9115.jpg"></div>
+            <div><img src="https://i.ibb.co/dwb6L1BQ/IMG-9154.jpg"></div>
+            <div><img src="https://i.ibb.co/G4sDdhYC/IMG-9155.jpg"></div>
+            <div><img src="https://i.ibb.co/1tjp983S/IMG-9176.jpg"></div>
+            <div><img src="https://i.ibb.co/B5CMs9ZN/IMG-9179.jpg"></div>
+            <div><img src="https://i.ibb.co/LhrCg5rp/IMG-9209.jpg"></div>
+            <div><img src="https://i.ibb.co/ycMv19R1/IMG-9208.jpg"></div>
+            <div><img src="https://i.ibb.co/Jwc9dnPW/IMG-9211.jpg"></div>
+            <div><img src="https://i.ibb.co/RkfZJwRJ/IMG-9210.jpg"></div>
+            <div><img src="https://i.ibb.co/B5Hgrv47/IMG-9207.jpg"></div>
+            <div><img src="https://i.ibb.co/q30BssRT/IMG-9270.jpg"></div>
+            <div><img src="https://i.ibb.co/jZh8zgTK/IMG-9272.jpg"></div>
+            <div><img src="https://i.ibb.co/Xr3rPnnX/IMG-9279.jpg"></div>
+            <div><img src="https://i.ibb.co/C5Jrz12J/IMG-9278.jpg"></div>
+        </div>
+    </div>
+
+    <!-- ETAPA 2: LA SORPRESA (SOLO LA IMAGEN) -->
+    <div id="sorpresa-final">
+        <img src="https://i.ibb.co/h1WbP1Rg/Tarjeta-Cup-n.png" class="img-sorpresa">
+    </div>
+
+    <script>
+        const frasesRotativas = [
+            "❤️ Te amo mi amor", "💖 Te extraño", "✨ Eres mi niña", "🌸 Eres lo más lindo", 
+            "💕 Mi vida entera", "👩‍❤️‍👨 Juntos por siempre", "😴 Sueño contigo", "🌅 Despertar a tu lado",
+            "💍 Mi futuro es contigo", "🏡 Nuestra vida juntos", "🌟 Eres mi sol", "🔥 Te amo infinito"
+        ];
+
+        function actualizarMensajeSegundo() {
+            const contenedor = document.getElementById("mensaje-programado");
+            if (contenedor) {
+                const ahoraEnSegundos = Math.floor(Date.now() / 1000);
+                const indice = ahoraEnSegundos % frasesRotativas.length;
+                contenedor.innerText = frasesRotativas[indice];
+            }
+        }
+
+        // FECHA DE LOS 31 AÑOS: 4 DE MAYO
+        const cumpleanos = new Date("May 4, 2026 00:00:00").getTime();
+
+        const x = setInterval(function() {
+            const ahora = new Date().getTime();
+            const faltante = cumpleanos - ahora;
+
+            actualizarMensajeSegundo();
+
+            const d = Math.floor(faltante / (1000 * 60 * 60 * 24));
+            const h = Math.floor((faltante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((faltante % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((faltante % (1000 * 60)) / 1000);
+
+            document.getElementById("reloj").innerHTML = d + "d " + h + "h " + m + "m " + s + "s ";
+
+            // CUANDO LLEGA A CERO
+            if (faltante < 0) {
+                clearInterval(x);
+                document.getElementById("pantalla-espera").style.display = "none";
+                document.getElementById("galeria").style.display = "none";
+                document.getElementById("sorpresa-final").style.display = "flex"; // Muestra la imagen centrada
+            }
+        }, 1000);
+
+        function abrirAlbum() { document.getElementById("galeria").style.display = "block"; }
+        function cerrarAlbum() { document.getElementById("galeria").style.display = "none"; }
+    </script>
+</body>
+
+  
